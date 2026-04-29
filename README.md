@@ -1,6 +1,6 @@
 # Financial Q&A Agent — RAG sobre Relatórios Financeiros
 
-Esse repositório foi fesenvolvido como case técnico para processo Seletivo da **MadeInWeb**.
+Esse repositório foi desenvolvido como case técnico para processo Seletivo da **MadeInWeb**.
 
 Consiste na construção de um agente conversacional de Q&A financeiro construído sobre um pipeline de
 Retrieval-Augmented Generation (RAG). Com enfoque em analisar documentos reais
@@ -412,5 +412,4 @@ Ver `notebooks/future_improvements.ipynb` para uma discussão sobre possível im
   reordenar por relevância semântica real
 - **LLM-as-a-judge:** usar um modelo externo (geralmente mais leve) para avaliar, já que o output pode ser tratado como binário (válido ou não válido)
   accuracy, completeness e relevance das respostas
-- **Chunking semântico:** substituir o splitter por tamanho por um splitter
-  baseado em mudança de tópico
+- **LLM-Chunk-Splitter** uso de uma LLM menor para otimizar o processo de chunking
