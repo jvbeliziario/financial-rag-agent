@@ -1,6 +1,6 @@
 # Financial Q&A Agent — RAG sobre Relatórios Financeiros
 
-Esse repositório foi fesenvolvido como case técnico para processo Seletivo da **MadeInWeb**.
+Esse repositório foi desenvolvido como case técnico para processo Seletivo da **MadeInWeb**.
 
 Consiste na construção de um agente conversacional de Q&A financeiro construído sobre um pipeline de
 Retrieval-Augmented Generation (RAG). Com enfoque em analisar documentos reais
@@ -120,6 +120,23 @@ jupyter==1.0.0
 ipykernel==6.29.4
 
 ```
+## Execução do Projeto
+
+Para interagir com o agente financeiro, você pode optar por duas formas de execução, dependendo do nível de detalhamento desejado para a demonstração.
+
+### 1. Demonstração Interativa via Jupyter Notebook 
+Para visualizar o chatbot acompanhando o funcionamento modular de cada etapa do pipeline (Retriever, Memória e Avaliação), utilize o notebook de demonstração.
+Com o ambiente virtual ativado e na raiz do repositório, execute o comando abaixo no terminal para abrir o Jupyter diretamente no arquivo correto:
+```bash
+jupyter notebook notebooks/demonstracao_rag.ipynb
+```
+
+### 2. Execução Direta via Terminal
+Caso deseje apenas iniciar o chatbot com a interface Gradio sem as explicações detalhadas do notebook, execute o script principal do agente.
+Com o ambiente virtual ativado e na raiz do repositório, utilize o comando:
+```bash
+python src/agent.py
+```
 
 ---
 
@@ -135,7 +152,15 @@ cp -r financebench/pdfs/ data/pdfs/
 cp financebench/data/financebench_open_source.jsonl evaluation/
 ```
 
-Para o projeto foram selecionados 5 pdfs principais, disponíveis do diretório data/pdfs do repositório.
+Para o projeto foram selecionados 5 pdfs principais, disponíveis do diretório data/pdfs do repositório:
+
+| Arquivo | Empresa | Tipo | Período |
+|---|---|---|---|
+| `APPLE_2022_10K.pdf` | Apple | 10-K | FY2022 |
+| `AMAZON_2023Q1_10Q.pdf` | Amazon | 10-Q | Q1 2023 |
+| `BOEING_2022_10K.pdf` | Boeing | 10-K | FY2022 |
+| `MICROSOFT_2022_10K.pdf` | Microsoft | 10-K | FY2022 |
+| `NIKE_2023_10K.pdf` | Nike | 10-K | FY2023 |
 
 ---
 
@@ -359,6 +384,16 @@ experimentos com diferentes configurações de chunking ou `top_k`.
 Resultados comparativos entre métricas:
 
 ![alt text](evaluation/results/metrics2.png)
+
+Nos primeiros 10 testes do benchmark com `k=5`, o retriever atingiu os seguintes resultados:
+
+| Configuração | Coverage % | MRR | nDCG | Doc Hit | Page Hit |
+|---|---|---|---|---|---|
+| top_k = 5 | 100% | 1.0 | 1.0 | 100% | 70% |
+| top_k = 10 | 100% | 1.0 | 1.0 | 100% | 80% |
+
+Coverage e MRR perfeitos indicam que as keywords de empresa e ano fiscal aparecem consistentemente no primeiro chunk retornado. O page hit abaixo de 100% reflete casos onde a evidência está distribuída em páginas adjacentes. Uma possível conclusão é que o retriever chega ao documento certo, mas nem sempre à página exata anotada no gabarito. Em nosso contexto isso se da por eventos multifatoriais como a query mencionar um contexto que não existe na base (Datas, métricas).
+
 ---
 
 ## Demonstração
@@ -368,7 +403,21 @@ Esse é um snippet do funcionamento, a demonstração completa se encontra no di
 
 
 
-**Pergunta direta:**
+**Memória de longo prazo entre sessões:**
+```
+# Sessão 1
+User:  What is Apple's FY2022 net income?
+Agent: Apple's net income for FY2022 was $99.8 billion...
+
+# Sessão encerrada — resumo persistido em memory/long_term.json
+
+# Sessão 2 (nova execução do agente)
+User:  What about the operating expenses?
+Agent: [retoma contexto da sessão anterior sobre Apple FY2022]
+       Apple's total operating expenses in FY2022 were $51.3 billion...
+```
+
+
 ```
 User:  What is Apple's FY2022 net income?
 Agent: Apple's net income for FY2022 was $99.8 billion, as reported in their
@@ -412,5 +461,4 @@ Ver `notebooks/future_improvements.ipynb` para uma discussão sobre possível im
   reordenar por relevância semântica real
 - **LLM-as-a-judge:** usar um modelo externo (geralmente mais leve) para avaliar, já que o output pode ser tratado como binário (válido ou não válido)
   accuracy, completeness e relevance das respostas
-- **Chunking semântico:** substituir o splitter por tamanho por um splitter
-  baseado em mudança de tópico
+- **LLM-Chunk-Splitter** uso de uma LLM menor para otimizar o processo de chunking
