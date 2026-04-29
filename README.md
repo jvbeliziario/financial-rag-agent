@@ -136,6 +136,8 @@ Caso deseje apenas iniciar o chatbot com a interface Gradio sem as explicações
 Com o ambiente virtual ativado e na raiz do repositório, utilize o comando:
 ```bash
 python src/agent.py
+```
+
 ---
 
 ## Dataset
