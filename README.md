@@ -339,7 +339,7 @@ RR(q) = 1 / rank_primeira_ocorrência
 MRR   = média dos RR sobre todas as keywords
 ```
 
-MRR = 1.0 significa que todas as keywords aparecem no primeiro chunk retornado —
+MRR = 1.0 significa que todas as keywords aparecem no primeiro chunk retornado, o que configura uma 
 situação ideal. MRR = 0.5 significa que em média estão na segunda posição.
 
 **nDCG — Normalized Discounted Cumulative Gain**
