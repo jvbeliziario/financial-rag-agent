@@ -120,7 +120,22 @@ jupyter==1.0.0
 ipykernel==6.29.4
 
 ```
+## Execução do Projeto
 
+Para interagir com o agente financeiro, você pode optar por duas formas de execução, dependendo do nível de detalhamento desejado para a demonstração.
+
+### 1. Demonstração Interativa via Jupyter Notebook 
+Para visualizar o chatbot acompanhando o funcionamento modular de cada etapa do pipeline (Retriever, Memória e Avaliação), utilize o notebook de demonstração.
+Com o ambiente virtual ativado e na raiz do repositório, execute o comando abaixo no terminal para abrir o Jupyter diretamente no arquivo correto:
+```bash
+jupyter notebook notebooks/demonstracao_rag.ipynb
+```
+
+### 2. Execução Direta via Terminal
+Caso deseje apenas iniciar o chatbot com a interface Gradio sem as explicações detalhadas do notebook, execute o script principal do agente.
+Com o ambiente virtual ativado e na raiz do repositório, utilize o comando:
+```bash
+python src/agent.py
 ---
 
 ## Dataset
