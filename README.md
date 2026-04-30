@@ -315,7 +315,7 @@ python evaluation/eval.py --max 10 --k 10 --plot-file evaluation/results/k10.png
 
 ### Métricas de retrieval
 
-A avaliação não usa LLM externo — todas as métricas são calculadas diretamente
+A avaliação não usa LLM externo, ou seja, todas as métricas são calculadas diretamente
 sobre os chunks recuperados, sem custo de API.
 
 **Keyword Coverage**
