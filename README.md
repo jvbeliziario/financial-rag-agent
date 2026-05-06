@@ -7,6 +7,13 @@ Retrieval-Augmented Generation (RAG). Com enfoque em analisar documentos reais
 de empresas listadas em bolsa (10-K, 10-Q, earnings reports) mantendo contexto
 ao longo de múltiplos turnos de conversa.
 
+Consideração importante:
+Os modelos de LLM e embedding, foram escolhidos visando o melhor tradeoff de performance e qualidade baseado na minha configuração atual que consiste:
+
+### Especificações
+Intel Core i5-10400F
+NVIDIA GA106 RTX 3060 12GB
+16 GB RAM
 
 ---
 
