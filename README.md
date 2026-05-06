@@ -11,9 +11,7 @@ Consideração importante:
 Os modelos de LLM e embedding, foram escolhidos visando o melhor tradeoff de performance e qualidade baseado na minha configuração atual que consiste:
 
 ### Especificações
-Intel Core i5-10400F
-NVIDIA GA106 RTX 3060 12GB
-16 GB RAM
+Intel Core i5-10400F | NVIDIA GA106 RTX 3060 12GB | 16 GB RAM
 
 ---
 
