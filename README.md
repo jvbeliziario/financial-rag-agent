@@ -389,12 +389,12 @@ Resultados comparativos entre métricas:
 
 ![alt text](evaluation/results/metrics2.png)
 
-Nos primeiros 10 testes do benchmark com `k=5`, o retriever atingiu os seguintes resultados:
+Nos primeiros 16 testes do benchmark com `k=5`, o retriever atingiu os seguintes resultados:
 
 | Configuração | Coverage % | MRR | nDCG | Doc Hit | Page Hit |
 |---|---|---|---|---|---|
-| top_k = 5 | 100% | 1.0 | 1.0 | 100% | 70% |
-| top_k = 10 | 100% | 1.0 | 1.0 | 100% | 80% |
+| top_k = 5 | 100% | 0.91 | 0.77 | 100% | 70% |
+| top_k = 10 | 100% | 0.80 | 0.76 | 100% | 80% |
 
 Coverage e MRR perfeitos indicam que as keywords de empresa e ano fiscal aparecem consistentemente no primeiro chunk retornado. O page hit abaixo de 100% reflete casos onde a evidência está distribuída em páginas adjacentes. Uma possível conclusão é que o retriever chega ao documento certo, mas nem sempre à página exata anotada no gabarito. Em nosso contexto isso se da por eventos multifatoriais como a query mencionar um contexto que não existe na base (Datas, métricas).
 
