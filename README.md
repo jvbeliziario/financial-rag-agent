@@ -406,25 +406,9 @@ Perguntas do case com respostas esperadas (disponíveis com gabarito no FinanceB
 Esse é um snippet do funcionamento, a demonstração completa se encontra no diretório **notebooks**
 
 
-
-**Memória de longo prazo entre sessões:**
-```
-# Sessão 1
-User:  What is Apple's FY2022 net income?
-Agent: Apple's net income for FY2022 was $99.8 billion...
-
-# Sessão encerrada — resumo persistido em memory/long_term.json
-
-# Sessão 2 (nova execução do agente)
-User:  What about the operating expenses?
-Agent: [retoma contexto da sessão anterior sobre Apple FY2022]
-       Apple's total operating expenses in FY2022 were $51.3 billion...
-```
-
-
 ```
 User:  What is Apple's FY2022 net income?
-Agent: Apple's net income for FY2022 was $99.8 billion, as reported in their
+Agent: Apple's net income for FY2022 was $99.8 million, as reported in their
        annual 10-K filing for the fiscal year ended September 24, 2022.
 ```
 
@@ -433,15 +417,21 @@ Agent: Apple's net income for FY2022 was $99.8 billion, as reported in their
 User:  And how does that compare to the previous year?
        [reescrito internamente para: "How does Apple's FY2022 net income
         compare to FY2021?"]
-Agent: Apple's FY2021 net income was $94.7 billion. The FY2022 figure of $99.8
-       billion represents an increase of approximately 5.4% year-over-year.
+Agent: Apple's FY2021 net income was $94.7 million. The FY2022 figure of $99.8
+       million represents an increase of approximately 5.4% year-over-year.
 ```
 
 **Pergunta multi-empresa:**
 ```
-User:  What was Amazon's revenue in Q1 2023?
-Agent: Amazon's total net sales in Q1 2023 were $127.4 billion, per their 10-Q
-       filing for the quarter ended March 31, 2023.
+User:  What was Amazon's revenue in Q1 2022?
+Agent: The provided context does not contain specific revenue data for Q1 2022. The financial information given covers the fiscal year ended December 31, 2022. For precise Q1 2022 revenue, we would need to refer to Amazon's Form 10-Q report for that period or another relevant earnings release.
+
+If you are interested in the overall annual figures for 2022, here is a summary:
+
+    Net Sales: $513,983 million (for the year ended December 31, 2022)
+    AWS Revenue: $80,096 million (for the year ended December 31, 2022)
+
+For more detailed quarterly information, please specify which company and exact period you are interested in.
 ```
 
 **Pergunta qualitativa:**
