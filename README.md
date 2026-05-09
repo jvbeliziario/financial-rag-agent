@@ -290,7 +290,7 @@ Se o LLM falhar, a pergunta original é usada como fallback
 
 ---
 
-## 9. Interface
+## Interface
 
 ```bash
 python src/agent.py
